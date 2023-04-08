@@ -1,13 +1,13 @@
-package api.reqresService.GET;
+package api.reqresService.users.request;
 
-public class ListResource {
+public class ListResourceReq {
     private int id;
     private String name;
     private int year;
     private String color;
     private String pantone_value;
 
-    public ListResource() {};
+    public ListResourceReq() {};
 
     public int getId() {
         return id;

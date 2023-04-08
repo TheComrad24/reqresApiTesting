@@ -1,9 +1,9 @@
-package api.reqresService.PUT;
+package api.reqresService.users.response;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import api.reqresService.users.request.UpdateUserReq;
 
 //Наследуемся от UpdateUserReq т.к в ответе так же используются параметры из запроса + добавляются свои
-public class UpdateUserResp extends UpdateUserReq{
+public class UpdateUserResp extends UpdateUserReq {
     private String updatedAt;
 
 

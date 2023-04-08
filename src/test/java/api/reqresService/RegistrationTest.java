@@ -1,8 +1,9 @@
 package api.reqresService;
 
-import api.reqresService.POST.RegistrationReq;
-import api.reqresService.POST.RegistrationSuccessResp;
-import api.reqresService.POST.RegistrationUnSuccessResp;
+import api.reqresService.config.ReqresServiceSpecifications;
+import api.reqresService.register.request.RegistrationReq;
+import api.reqresService.register.response.RegistrationSuccessResp;
+import api.reqresService.register.response.RegistrationUnSuccessResp;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class RegistrationTest {
                 ReqresServiceSpecifications.respSpec200());
 
         int id = 4;
-        String token = "QpwL5tke4Pnpja7X4";
+        String expectedToken = "QpwL5tke4Pnpja7X4";
         RegistrationReq registrationReq = new RegistrationReq("eve.holt@reqres.in","pistol");
         RegistrationSuccessResp registrationSuccessResp = given()
                 .body(registrationReq)
@@ -29,7 +30,7 @@ public class RegistrationTest {
         Assert.assertNotNull(registrationSuccessResp.getId());
         Assert.assertNotNull(registrationSuccessResp.getToken());
         Assert.assertEquals(id, registrationSuccessResp.getId());
-        Assert.assertEquals(token, registrationSuccessResp.getToken());
+        Assert.assertEquals(expectedToken, registrationSuccessResp.getToken());
     }
 
     @Test

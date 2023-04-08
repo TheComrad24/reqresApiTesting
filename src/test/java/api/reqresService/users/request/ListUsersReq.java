@@ -1,6 +1,6 @@
-package api.reqresService.GET;
+package api.reqresService.users.request;
 
-public class ListUsers {
+public class ListUsersReq {
     private Integer id;
     private String email;
     private String first_name;
@@ -8,7 +8,7 @@ public class ListUsers {
     private String avatar;
 
     //Пустой конструктор для сериализации. Иначе ошибка
-    public ListUsers() {};
+    public ListUsersReq() {};
 
     public Integer getId() {
         return id;

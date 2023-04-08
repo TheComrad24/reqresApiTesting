@@ -1,4 +1,4 @@
-package api.reqresService.POST;
+package api.reqresService.register.response;
 
 public class RegistrationUnSuccessResp {
     private String error;

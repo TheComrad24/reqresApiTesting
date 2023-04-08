@@ -1,7 +1,7 @@
 package api.reqresService;
-import api.reqresService.POST.RegistrationReq;
-import api.reqresService.PUT.UpdateUserReq;
-import api.reqresService.PUT.UpdateUserResp;
+import api.reqresService.config.ReqresServiceSpecifications;
+import api.reqresService.users.request.UpdateUserReq;
+import api.reqresService.users.response.UpdateUserResp;
 import org.junit.Assert;
 import org.junit.Test;
 

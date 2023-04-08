@@ -1,4 +1,4 @@
-package api.reqresService.PUT;
+package api.reqresService.users.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 

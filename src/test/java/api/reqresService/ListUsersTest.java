@@ -1,6 +1,7 @@
 package api.reqresService;
 
-import api.reqresService.GET.ListUsers;
+import api.reqresService.config.ReqresServiceSpecifications;
+import api.reqresService.users.request.ListUsersReq;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.List;
@@ -14,11 +15,11 @@ public class ListUsersTest {
         ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(URL),
                 ReqresServiceSpecifications.respSpec200());
 
-        List<ListUsers> users = given()
+        List<ListUsersReq> users = given()
                 .when()
                 .get("/api/users?page=2")
                 .then().log().all()
-                .extract().body().jsonPath().getList("data", ListUsers.class);
+                .extract().body().jsonPath().getList("data", ListUsersReq.class);
 
         users.forEach(x -> Assert.assertTrue(x.getAvatar().contains(x.getId().toString())));
         // #Почитать про stream()

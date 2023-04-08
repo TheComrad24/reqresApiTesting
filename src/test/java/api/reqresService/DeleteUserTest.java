@@ -1,5 +1,6 @@
 package api.reqresService;
 
+import api.reqresService.config.ReqresServiceSpecifications;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
 

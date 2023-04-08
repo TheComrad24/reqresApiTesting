@@ -1,4 +1,4 @@
-package api.reqresService.POST;
+package api.reqresService.register.request;
 
 public class RegistrationReq {
     private String email;
