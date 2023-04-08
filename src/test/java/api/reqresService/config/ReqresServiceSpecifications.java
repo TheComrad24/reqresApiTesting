@@ -16,7 +16,7 @@ public class ReqresServiceSpecifications {
                 .build();
     }
 
-    //Спецификация ответа для 200 статус кода, но можно передовать необходимый код в качестве параметра
+
     public static ResponseSpecification respSpec200(){
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)

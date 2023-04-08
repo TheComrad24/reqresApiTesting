@@ -35,6 +35,5 @@ public class UpdateUserTest {
         Assert.assertEquals(localTime, updateUserResp.getUpdatedAt().replaceAll(regex,""));
         Assert.assertEquals(updateUserReq.getName(), updateUserResp.getName());
         Assert.assertEquals(updateUserReq.getJob(), updateUserResp.getJob());
-
     }
 }
