@@ -1,10 +1,10 @@
 package api.reqresService.register.request;
 
-public class RegistrationReq {
+public class RegisterReq {
     private String email;
     private String password;
 
-    public RegistrationReq(String email, String password) {
+    public RegisterReq(String email, String password) {
         this.email = email;
         this.password = password;
     }

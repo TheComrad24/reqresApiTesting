@@ -1,9 +1,9 @@
 package api.reqresService.register.response;
 
-public class RegistrationUnSuccessResp {
+public class RegisterUnSuccessResp {
     private String error;
 
-    public RegistrationUnSuccessResp() {};
+    public RegisterUnSuccessResp() {};
 
     public String getError() {
         return error;

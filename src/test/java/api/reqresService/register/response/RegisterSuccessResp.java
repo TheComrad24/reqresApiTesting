@@ -1,10 +1,10 @@
 package api.reqresService.register.response;
 
-public class RegistrationSuccessResp {
+public class RegisterSuccessResp {
     private int id;
     private String token;
 
-    public RegistrationSuccessResp(){}
+    public RegisterSuccessResp(){}
 
     public int getId() {
         return id;
