@@ -1,7 +1,5 @@
 package api.reqresService.users.request;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 public class UpdateUserReq {
     private String name;
     private String job;

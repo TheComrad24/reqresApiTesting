@@ -2,6 +2,7 @@ package api.reqresService.register.request;
 
 import api.reqresService.register.response.RegisterSuccessResp;
 import api.reqresService.register.response.RegisterUnSuccessResp;
+
 import static io.restassured.RestAssured.given;
 
 public class RegisterReq {
@@ -13,26 +14,26 @@ public class RegisterReq {
         this.password = password;
     }
 
-    public RegisterUnSuccessResp sendInvalidRequest(RegisterReq registerReq,String endPoint){
-
-        RegisterUnSuccessResp response = given()
-                .body(registerReq)
-                .when()
-                .post(endPoint)
-                .then().log().all()
-                .extract().as(RegisterUnSuccessResp.class);
-        return response;
-    }
-
     public RegisterSuccessResp sendValidRequest(RegisterReq registerReq, String endPoint){
 
-        RegisterSuccessResp response = given()
+        RegisterSuccessResp resp = given()
                 .body(registerReq)
                 .when()
                 .post(endPoint)
                 .then().log().all()
                 .extract().as(RegisterSuccessResp.class);
-        return response;
+        return resp;
+    }
+
+    public RegisterUnSuccessResp sendInvalidRequest(RegisterReq registerReq,String endPoint){
+
+        RegisterUnSuccessResp resp = given()
+                .body(registerReq)
+                .when()
+                .post(endPoint)
+                .then().log().all()
+                .extract().as(RegisterUnSuccessResp.class);
+        return resp;
     }
 
     public String getEmail() {

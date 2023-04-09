@@ -6,11 +6,9 @@ import api.reqresService.users.request.UpdateUserReq;
 public class UpdateUserResp extends UpdateUserReq {
     private String updatedAt;
 
-
     public UpdateUserResp() {
         super();
     }
-
     public String getUpdatedAt() {
         return updatedAt;
     }

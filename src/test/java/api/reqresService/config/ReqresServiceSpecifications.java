@@ -9,7 +9,6 @@ import io.restassured.specification.ResponseSpecification;
 
 public class ReqresServiceSpecifications {
     public static RequestSpecification reqSpec(String url){
-        // Почитать про билдер
         return new RequestSpecBuilder()
                 .setBaseUri(url)
                 .setContentType(ContentType.JSON)

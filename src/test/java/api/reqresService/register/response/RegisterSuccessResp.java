@@ -9,7 +9,6 @@ public class RegisterSuccessResp {
     public int getId() {
         return id;
     }
-
     public String getToken() {
         return token;
     }
