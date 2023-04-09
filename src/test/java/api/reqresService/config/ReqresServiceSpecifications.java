@@ -16,7 +16,6 @@ public class ReqresServiceSpecifications {
                 .build();
     }
 
-
     public static ResponseSpecification respSpec200(){
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)
