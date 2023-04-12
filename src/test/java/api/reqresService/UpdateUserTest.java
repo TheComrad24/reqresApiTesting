@@ -6,10 +6,9 @@ import api.reqresService.users.response.UpdateUserResp;
 import jdk.jfr.Description;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.time.Clock;
 
-import static io.restassured.RestAssured.given;
+
 
 public class UpdateUserTest {
 
@@ -28,8 +27,9 @@ public class UpdateUserTest {
         // Получили формат времени такой же,как в ответе Json, кроме последних символов. Отсекаем последние символы
         // при помощи регулярки как у локального времени, так и у времени респонса
         String localTime = Clock.systemUTC().instant().toString().replaceAll(regex,"");
+        String responseTime = updateUserResp.getUpdatedAt().toString().replaceAll(regex,"");
 
-        Assert.assertEquals(localTime, updateUserResp.getUpdatedAt().replaceAll(regex,""));
+        Assert.assertEquals(localTime, responseTime);
         Assert.assertEquals(updateUserReq.getName(), updateUserResp.getName());
         Assert.assertEquals(updateUserReq.getJob(), updateUserResp.getJob());
     }

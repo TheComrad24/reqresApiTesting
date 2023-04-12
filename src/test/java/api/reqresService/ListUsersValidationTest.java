@@ -3,7 +3,6 @@ package api.reqresService;
 import api.reqresService.config.EndPoints;
 import api.reqresService.config.ReqresServiceSpecifications;
 import org.junit.Test;
-
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
