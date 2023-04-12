@@ -1,7 +1,9 @@
 package api.reqresService;
+import api.reqresService.config.EndPoints;
 import api.reqresService.config.ReqresServiceSpecifications;
 import api.reqresService.users.request.UpdateUserReq;
 import api.reqresService.users.response.UpdateUserResp;
+import jdk.jfr.Description;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,20 +12,15 @@ import java.time.Clock;
 import static io.restassured.RestAssured.given;
 
 public class UpdateUserTest {
-    private final static String URL = "https://reqres.in";
 
     @Test
+    @Description("Успешное обновление пользователя. Локальная дата обновления = Дата сервера")
     public void successUpdate() {
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(URL),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
                 ReqresServiceSpecifications.respSpec200());
 
         UpdateUserReq updateUserReq = new UpdateUserReq("morpheus","zion resident");
-        UpdateUserResp updateUserResp = given()
-                .body(updateUserReq)
-                .when()
-                .put("/api/users/2")
-                .then().log().all()
-                .extract().as(UpdateUserResp.class);
+        UpdateUserResp updateUserResp = UpdateUserReq.sendUpdateRequest(updateUserReq, 2);
 
         // Регулярка для нахождения последних символов и точки
         String regex = "\\..*$";

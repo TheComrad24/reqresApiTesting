@@ -1,4 +1,4 @@
-package api.reqresService.unknown;
+package api.reqresService.unknown.request;
 
 import api.reqresService.config.EndPoints;
 
@@ -27,19 +27,15 @@ public class ListResourceGet {
     public Integer getPage() {
         return page;
     }
-
     public Integer getPer_page() {
         return per_page;
     }
-
     public Integer getTotal() {
         return total;
     }
-
     public Integer getTotal_pages() {
         return total_pages;
     }
-
     public ListResourceData getListResourceData() {
         return listResourceData;
     }

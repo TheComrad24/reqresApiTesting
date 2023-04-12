@@ -25,7 +25,7 @@ public class RegisterValidationTest {
         given()
                 .body(registerReq)
                 .when()
-                .post("/api/register")
-                .then().assertThat().body(matchesJsonSchemaInClasspath("reqresService/RegisterSuccessShema.json"));
+                .post(EndPoints.registerEndpoint)
+                .then().assertThat().body(matchesJsonSchemaInClasspath("reqresService/RegisteShema.json"));
     }
 }

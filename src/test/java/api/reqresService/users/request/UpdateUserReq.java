@@ -1,9 +1,12 @@
 package api.reqresService.users.request;
 
+import api.reqresService.config.EndPoints;
+import api.reqresService.users.response.UpdateUserResp;
+import static io.restassured.RestAssured.given;
+
 public class UpdateUserReq {
     private String name;
     private String job;
-
 
     public UpdateUserReq(String name, String job) {
         this.name = name;
@@ -12,10 +15,19 @@ public class UpdateUserReq {
 
     public UpdateUserReq(){}
 
+    public static UpdateUserResp sendUpdateRequest(UpdateUserReq updateUserReq, int user){
+        UpdateUserResp updateUserResp = given()
+                .body(updateUserReq)
+                .when()
+                .put(EndPoints.usersUpdateEndpoint, user)
+                .then().log().all()
+                .extract().as(UpdateUserResp.class);
+        return updateUserResp;
+    }
+
     public String getName() {
         return name;
     }
-
     public String getJob() {
         return job;
     }

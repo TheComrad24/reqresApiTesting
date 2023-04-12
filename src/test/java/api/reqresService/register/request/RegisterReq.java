@@ -1,5 +1,6 @@
 package api.reqresService.register.request;
 
+import api.reqresService.config.EndPoints;
 import api.reqresService.register.response.RegisterSuccessResp;
 import api.reqresService.register.response.RegisterUnSuccessResp;
 
@@ -14,23 +15,23 @@ public class RegisterReq {
         this.password = password;
     }
 
-    public RegisterSuccessResp sendValidRequest(RegisterReq registerReq, String endPoint){
+    public RegisterSuccessResp sendValidRequest(RegisterReq registerReq){
 
         RegisterSuccessResp resp = given()
                 .body(registerReq)
                 .when()
-                .post(endPoint)
+                .post(EndPoints.registerEndpoint)
                 .then().log().all()
                 .extract().as(RegisterSuccessResp.class);
         return resp;
     }
 
-    public RegisterUnSuccessResp sendInvalidRequest(RegisterReq registerReq,String endPoint){
+    public RegisterUnSuccessResp sendInvalidRequest(RegisterReq registerReq){
 
         RegisterUnSuccessResp resp = given()
                 .body(registerReq)
                 .when()
-                .post(endPoint)
+                .post(EndPoints.registerEndpoint)
                 .then().log().all()
                 .extract().as(RegisterUnSuccessResp.class);
         return resp;

@@ -1,28 +1,24 @@
 package api.reqresService.users.request;
 
-public class ListUsersGet {
-    private Integer id;
-    private String email;
-    private String first_name;
-    private String last_name;
-    private String avatar;
+import api.reqresService.config.EndPoints;
+import java.util.List;
+import static io.restassured.RestAssured.given;
 
-    //Пустой конструктор для сериализации
+public class ListUsersGet {
+    private int page;
+    private int per_page;
+    private int total;
+    private int total_pages;
+    ListUsersData listUsersData;
+
     public ListUsersGet() {};
 
-    public Integer getId() {
-        return id;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getFirst_name() {
-        return first_name;
-    }
-    public String getLast_name() {
-        return last_name;
-    }
-    public String getAvatar() {
-        return avatar;
+    public static List<ListUsersData> sendRequestGetUserList(Integer page){
+        List<ListUsersData> users = given()
+                .when()
+                .get(EndPoints.usersEndpoint, page)
+                .then().log().all()
+                .extract().body().jsonPath().getList("data", ListUsersData.class);
+        return  users;
     }
 }

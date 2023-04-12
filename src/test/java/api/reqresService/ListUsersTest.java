@@ -1,30 +1,26 @@
 package api.reqresService;
 
+import api.reqresService.config.EndPoints;
 import api.reqresService.config.ReqresServiceSpecifications;
+import api.reqresService.users.request.ListUsersData;
 import api.reqresService.users.request.ListUsersGet;
+import jdk.jfr.Description;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.List;
-import static io.restassured.RestAssured.given;
 
 public class ListUsersTest {
-    private final static String URL = "https://reqres.in";
 
     @Test
+    @Description("Запрос списка пользователей на странице" +
+                 "Аватар должен включать в себя id. Почта оканчиваться на @reqres.in")
     public void checkAvatarAndIdTest() {
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(URL),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
                 ReqresServiceSpecifications.respSpec200());
 
-        List<ListUsersGet> users = given()
-                .when()
-                .get("/api/users?page=2")
-                .then().log().all()
-                .extract().body().jsonPath().getList("data", ListUsersGet.class);
+        List<ListUsersData> users = ListUsersGet.sendRequestGetUserList(2);
 
         users.forEach(x -> Assert.assertTrue(x.getAvatar().contains(x.getId().toString())));
-        // #Почитать про stream()
         Assert.assertTrue(users.stream().allMatch(x -> x.getEmail().endsWith("@reqres.in")));
     }
-
-
 }

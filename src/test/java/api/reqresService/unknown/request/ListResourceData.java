@@ -1,4 +1,4 @@
-package api.reqresService.unknown;
+package api.reqresService.unknown.request;
 
 public class ListResourceData {
     private Integer id;
