@@ -1,6 +1,6 @@
 package api.reqresService;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.config.ReqresServiceSpecifications;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
@@ -10,12 +10,12 @@ public class ListResourceValidationTest {
 
     @Test
     public void successListResShemaTest(){
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec200());
 
         given()
                 .when()
-                .get(EndPoints.unknownEndpoint)
-                .then().assertThat().body(matchesJsonSchemaInClasspath("reqresService/ListResourceShema.json"));
+                .get(AppProvider.UNKNOWN_ENDPOINT)
+                .then().assertThat().body(matchesJsonSchemaInClasspath("reqresService/listResourceShema.json"));
     }
 }

@@ -1,6 +1,6 @@
 package api.reqresService;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.config.ReqresServiceSpecifications;
 import api.reqresService.register.request.RegisterReq;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class RegisterValidationTest {
 
     @Test
     public void successRegShemaTest(){
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec200());
 
         RegisterReq registerReq = new RegisterReq("eve.holt@reqres.in","pistol");
@@ -25,7 +25,7 @@ public class RegisterValidationTest {
         given()
                 .body(registerReq)
                 .when()
-                .post(EndPoints.registerEndpoint)
-                .then().assertThat().body(matchesJsonSchemaInClasspath("reqresService/RegisteShema.json"));
+                .post(AppProvider.REGISTER_ENDPOINT)
+                .then().assertThat().body(matchesJsonSchemaInClasspath("reqresService/registeShema.json"));
     }
 }

@@ -1,6 +1,6 @@
 package api.reqresService;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.config.ReqresServiceSpecifications;
 import api.reqresService.users.request.UpdateUserReq;
 import org.junit.Test;
@@ -11,15 +11,15 @@ public class UpdateUserValidationTest {
 
     @Test
     public void updateUserValidationTest(){
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec200());
 
         UpdateUserReq updateUserReq = new UpdateUserReq("morpheus","zion resident");
         given()
                 .body(updateUserReq)
                 .when()
-                .put(EndPoints.usersUpdateEndpoint,2)
+                .put(AppProvider.USERS_UPDATE_ENDPOINT,2)
                 .then().log().all()
-                .assertThat().body(matchesJsonSchemaInClasspath("reqresService/UpdateUserShema.json"));
+                .assertThat().body(matchesJsonSchemaInClasspath("reqresService/updateUserShema.json"));
     }
 }
