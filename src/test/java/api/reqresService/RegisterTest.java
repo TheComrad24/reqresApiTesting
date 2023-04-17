@@ -1,6 +1,6 @@
 package api.reqresService;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.config.ReqresServiceSpecifications;
 import api.reqresService.register.request.RegisterReq;
 import api.reqresService.register.response.RegisterSuccessResp;
@@ -14,7 +14,7 @@ public class RegisterTest {
     @Test
     @Description("Успешная регистрация клиента")
     public void successRegTest(){
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec200());
 
         int expectedId = 4;
@@ -30,7 +30,7 @@ public class RegisterTest {
     @Test
     @Description("Регистрация клиента без пароля")
     public void regWithoutPass(){
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec400());
         String expectedError = "Missing password";
 

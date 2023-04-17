@@ -1,6 +1,6 @@
 package api.reqresService;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.config.ReqresServiceSpecifications;
 import api.reqresService.unknown.request.ListResourceData;
 import api.reqresService.unknown.request.ListResourceGet;
@@ -16,7 +16,7 @@ public class ListResourceTest {
     @Test
     @Description("Метод Get /api/unknown возвращает список объектов отсортированных по возрастанию по годам")
     public void sortedYearsAscList(){
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec200());
 
         List<Integer> yearsResp = ListResourceGet.sendRequestGetDataList().stream()

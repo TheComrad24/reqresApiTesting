@@ -1,5 +1,5 @@
 package api.reqresService;
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.config.ReqresServiceSpecifications;
 import api.reqresService.users.request.UpdateUserReq;
 import api.reqresService.users.response.UpdateUserResp;
@@ -15,7 +15,7 @@ public class UpdateUserTest {
     @Test
     @Description("Успешное обновление пользователя. Локальная дата обновления = Дата сервера")
     public void successUpdate() {
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec200());
 
         UpdateUserReq updateUserReq = new UpdateUserReq("morpheus","zion resident");

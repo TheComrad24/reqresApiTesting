@@ -1,6 +1,6 @@
 package api.reqresService.register.request;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.register.response.RegisterSuccessResp;
 import api.reqresService.register.response.RegisterUnSuccessResp;
 
@@ -20,7 +20,7 @@ public class RegisterReq {
         RegisterSuccessResp resp = given()
                 .body(registerReq)
                 .when()
-                .post(EndPoints.registerEndpoint)
+                .post(AppProvider.REGISTER_ENDPOINT)
                 .then().log().all()
                 .extract().as(RegisterSuccessResp.class);
         return resp;
@@ -31,7 +31,7 @@ public class RegisterReq {
         RegisterUnSuccessResp resp = given()
                 .body(registerReq)
                 .when()
-                .post(EndPoints.registerEndpoint)
+                .post(AppProvider.REGISTER_ENDPOINT)
                 .then().log().all()
                 .extract().as(RegisterUnSuccessResp.class);
         return resp;

@@ -1,6 +1,6 @@
 package api.reqresService.unknown.request;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class ListResourceGet {
     public static List <ListResourceData> sendRequestGetDataList() {
         List<ListResourceData> response = given()
                 .when()
-                .get(EndPoints.unknownEndpoint)
+                .get(AppProvider.UNKNOWN_ENDPOINT)
                 .then().log().all()
                 .extract().body().jsonPath().getList("data",ListResourceData.class);
         return response;

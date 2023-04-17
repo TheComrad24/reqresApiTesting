@@ -1,6 +1,6 @@
 package api.reqresService;
 
-import api.reqresService.config.EndPoints;
+import api.reqresService.config.AppProvider;
 import api.reqresService.config.ReqresServiceSpecifications;
 import api.reqresService.users.request.ListUsersData;
 import api.reqresService.users.request.ListUsersGet;
@@ -15,7 +15,7 @@ public class ListUsersTest {
     @Description("Запрос списка пользователей на странице" +
                  "Аватар должен включать в себя id. Почта оканчиваться на @reqres.in")
     public void checkAvatarAndIdTest() {
-        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(EndPoints.baseUrl),
+        ReqresServiceSpecifications.installSpecification(ReqresServiceSpecifications.reqSpec(AppProvider.URL),
                 ReqresServiceSpecifications.respSpec200());
 
         List<ListUsersData> users = ListUsersGet.sendRequestGetUserList(2);
